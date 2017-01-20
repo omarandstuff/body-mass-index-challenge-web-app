@@ -2,7 +2,7 @@ import Ajax from 'simple-ajax'
 import { store } from './store'
 import * as actionCreators from './action_creators'
 
-export const API_URL = 'http://localhost:3000/'
+export const API_URL = 'https://body-mass-index-api.herokuapp.com/'
 export var TOKEN
 
 function getResponse(event) {
