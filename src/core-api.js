@@ -70,3 +70,63 @@ export function logOut() {
 
   ajax.send()
 }
+
+
+
+export function loadRecords() {
+  var ajax = new Ajax({
+        url: this.API_URL + 'records',
+        method: 'GET',
+        headers: { csrf_token: TOKEN }
+      })
+
+  ajax.on('success', event => {
+    var response = getResponse(event)
+    store.dispatch(actionCreators.recordsLoaded(response))
+  })
+
+  ajax.on('error', event => {
+    store.dispatch(actionCreators.recordsLoadFailed())
+  })
+
+  ajax.send()
+}
+
+export function createRecord(data) {
+  var ajax = new Ajax({
+        url: this.API_URL + 'records',
+        method: 'POST',
+        headers: { csrf_token: TOKEN },
+        data: JSON.stringify(data)
+      })
+
+  ajax.on('success', event => {
+    var response = getResponse(event)
+
+    store.dispatch(actionCreators.recordCreated(response))
+  })
+
+  ajax.on('error', event => {
+    store.dispatch(actionCreators.recordCreationFailed())
+  })
+
+  ajax.send()
+}
+
+export function deleteRecord(id) {
+  var ajax = new Ajax({
+        url: this.API_URL + 'records/' + id,
+        method: 'DELETE',
+        headers: { csrf_token: TOKEN }
+      })
+
+  ajax.on('success', event => {
+    store.dispatch(actionCreators.recordDeleted(id))
+  })
+
+  ajax.on('error', event => {
+    store.dispatch(actionCreators.recordDeletionFailed(id))
+  })
+
+  ajax.send()
+}
