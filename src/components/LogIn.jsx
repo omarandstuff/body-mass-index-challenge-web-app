@@ -55,7 +55,6 @@ export class LogIn extends React.Component {
               </form>
             </div>
           </div>
-
         </div>
       </DocumentTitle>
     )
