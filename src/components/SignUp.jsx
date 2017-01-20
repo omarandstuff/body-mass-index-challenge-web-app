@@ -36,31 +36,33 @@ export class SignUp extends React.Component {
 
     return (
       <DocumentTitle title={'SignUp'}>
-        <div>
-          <h2>
-            SignUp
-          </h2>
-          <form onSubmit={ this.processSignUp }>
-            <div>
-              <label>Email</label>
-              <input name='email' type='email' value={ form.get('email') || '' } onChange={ this.handleChange }/>
+        <div className="ui container">
+          <div className="ui two column centered grid">
+            <div className="column">
+              <h2 className="ui center">
+                SignUp
+              </h2>
+              <form className="ui form" onSubmit={ this.processSignUp }>
+                <div className="field">
+                  <label>Email</label>
+                  <input name='email' type='text' value={ form.get('email') || '' } placeholder="Email" onChange={ this.handleChange }/>
+                </div>
+                <div className="field">
+                  <label>Firstname</label>
+                  <input name='firstname' type='text' value={ form.get('firstname') || '' } placeholder="Firstname" onChange={ this.handleChange }/>
+                </div>
+                <div className="field">
+                  <label>Lastname</label>
+                  <input name='lastname' type='text' value={ form.get('lastname') || '' } placeholder="Lastname" onChange={ this.handleChange }/>
+                </div>
+                <div className="field">
+                  <label>Password</label>
+                  <input name='password' type='password' value={ form.get('password') || '' } placeholder="Password" onChange={ this.handleChange }/>
+                </div>
+                <button className="ui button" type="submit">Submit</button>
+              </form>
             </div>
-            <div>
-              <label>Firstname</label>
-              <input name='firstname' type='text' value={ form.get('firstname') || '' } onChange={ this.handleChange }/>
-            </div>
-            <div>
-            <label>Lastname</label>
-              <input name='lastname' type='text' value={ form.get('lastname') || '' } onChange={ this.handleChange }/>
-            </div>
-            <div>
-              <label>Password</label>
-              <input name='password' type='password' value={ form.get('password') || '' } onChange={ this.handleChange }/>
-            </div>
-            <div>
-              <button type="submit">Sign Up</button>
-            </div>
-          </form>
+          </div>
         </div>
       </DocumentTitle>
     )

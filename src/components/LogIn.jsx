@@ -36,23 +36,26 @@ export class LogIn extends React.Component {
 
     return (
       <DocumentTitle title={'LogIn'}>
-        <div>
-          <h2>
-            LogIn
-          </h2>
-          <form onSubmit={ this.processLogIn }>
-            <div>
-              <label>Email</label>
-              <input name='email' type='text' value={ form.get('email') || '' } onChange={ this.handleChange }/>
+        <div className="ui container">
+          <div className="ui two column centered grid">
+            <div className="column">
+              <h2 className="ui center">
+                Login
+              </h2>
+              <form className="ui form" onSubmit={ this.processLogIn }>
+                <div className="field">
+                  <label>Email</label>
+                  <input name='email' type='text' value={ form.get('email') || '' } placeholder="Email" onChange={ this.handleChange }/>
+                </div>
+                <div className="field">
+                  <label>Password</label>
+                  <input name='password' type='password' value={ form.get('password') || '' } placeholder="Password" onChange={ this.handleChange }/>
+                </div>
+                <button className="ui button" type="submit">Submit</button>
+              </form>
             </div>
-            <div>
-              <label>Password</label>
-              <input name='password' type='password' value={ form.get('password') || '' } onChange={ this.handleChange }/>
-            </div>
-            <div>
-              <button type="submit">Log In</button>
-            </div>
-          </form>
+          </div>
+
         </div>
       </DocumentTitle>
     )

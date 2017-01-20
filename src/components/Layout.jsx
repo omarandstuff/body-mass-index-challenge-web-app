@@ -26,44 +26,35 @@ export class Layout extends React.Component {
   }
 
   render() {
+    let loggedIn = this.props.SESSION_STATUS === 'LOGGED_IN'
+    var sesssionBar = void 0
+
+    if(loggedIn) {
+      sesssionBar = (
+        <a className="item" onClick={ this.processLogOut }>Log Out</a>
+      )
+    } else {
+      sesssionBar = (
+        <Link to="/signup" className="item">Sign Up</Link>
+      )
+    }
     return (
-      <div>
-        <header>
-          <Link to="/">
-            <p>
-              Body Mass Index Calculator
-            </p>
-          </Link>
-          { this.props.SESSION_STATUS === 'LOGGED_IN' ? (
-              <a href='#' onClick={ this.processLogOut }>Log Out</a>
-            ) : (
-              <div>
-                <div>
-                  <Link to="/login">Log in</Link>
-                </div>
-                <div>
-                  <Link to="/signup">Sign Up</Link>
-                </div>
-              </div>
-            )}
-        </header>
-        <div>
-          <p>
-          ------------------------------------------------------------------------------------------------
-          </p>
-          { this.props.children }
-          <p>
-          ------------------------------------------------------------------------------------------------
-          </p>
+      <div className="ui container">
+        <div className="ui masthead vertical segment">
+          <h2 className="ui center aligned icon header">
+            <i className="circular male icon"></i>
+            <Link to="/"> Body Mass Index Calculator</Link>
+          </h2>
+          <div className="ui menu">
+            <div className="right menu">
+              { sesssionBar }
+            </div>
+          </div>
         </div>
-        <footer>
-          <p>
-            David de Anda© 2017
-          </p>
-          <pre>
-            { JSON.stringify(this.props.STATE, null, 2) }
-          </pre>
-        </footer>
+        
+        <div className="ui vertical segment">
+          { this.props.children }
+        </div>
       </div>
     )
   }
