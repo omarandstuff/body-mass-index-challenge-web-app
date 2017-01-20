@@ -1,9 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import './index.css';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import AppRoutes from './components/AppRoutes'
+import { store } from './store'
+import Immutable from 'immutable'
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
+store.dispatch({ type: 'INITIAL_STATE', state: Immutable.Map({ SESSION_STATUS: 'CHECKING_SESSION' }) })
+
+ReactDOM.render(<AppRoutes/>, document.getElementById('root'))
