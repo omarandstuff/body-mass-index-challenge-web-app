@@ -23,6 +23,27 @@ export default function reducer(state = coreFunctions.INITIAL_STATE, action) {
   case 'LOGOUT':
     return coreFunctions.logOut(state)
 
+  case 'LOAD_RECORDS':
+    return coreFunctions.loadRecords(state, action.records)
+  case 'RECORDS_LOADED':
+    return coreFunctions.recordsLoaded(state, action.records)
+  case 'RECORDS_LOAD_FAILED':
+    return coreFunctions.recordsLoadFailed(state)
+  case 'CREATE_RECORD':
+    return coreFunctions.createRecord(state, action.record)
+  case 'RECORD_CREATED':
+    return coreFunctions.recordCreated(state, action.record)
+  case 'RECORD_CREATION_FAILED':
+    return coreFunctions.recordCreationFailed(state)
+  case 'CHANGE_RECORD_FORM':
+    return coreFunctions.changeRecordForm(state, action.field, action.value)
+  case 'DELETE_RECORD':
+    return coreFunctions.deleteRecord(state, action.id)
+  case 'RECORD_DELETED':
+    return coreFunctions.recordDeleted(state, action.id)
+  case 'RECORD_DELETION_FAILED':
+    return coreFunctions.recordDeletionFailed(state, action.id)
+
   default:
     return state
   }
